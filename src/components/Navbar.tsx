@@ -110,62 +110,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
           </div>
 
-          {/* Tab Navigation & Profile Panel */}
+          {/* Profile & Controls Panel */}
           <div className="flex items-center space-x-2.5 sm:space-x-4 shrink-0">
-            {/* Desktop Tab Buttons */}
-            <div className="hidden md:flex items-center space-x-1">
-              <button
-                id="tab-btn-explore"
-                onClick={() => setCurrentTab('explore')}
-                className={`px-3.5 py-2 rounded-lg font-sans text-sm font-semibold transition-all cursor-pointer ${
-                  currentTab === 'explore'
-                    ? 'bg-tenant bg-opacity-10 text-tenant font-bold'
-                    : 'text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800/60'
-                }`}
-              >
-                {t.explore}
-              </button>
-              <button
-                id="tab-btn-renter"
-                onClick={() => setCurrentTab('renter-dashboard')}
-                className={`px-3.5 py-2 rounded-lg font-sans text-sm font-semibold transition-all cursor-pointer ${
-                  currentTab === 'renter-dashboard'
-                    ? 'bg-tenant bg-opacity-10 text-tenant font-bold'
-                    : 'text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800/60'
-                }`}
-              >
-                {t.myBookings}
-              </button>
-              <button
-                id="tab-btn-owner"
-                onClick={() => setCurrentTab('owner-dashboard')}
-                className={`px-3.5 py-2 rounded-lg font-sans text-sm font-semibold transition-all cursor-pointer ${
-                  currentTab === 'owner-dashboard'
-                    ? 'bg-tenant bg-opacity-10 text-tenant font-bold'
-                    : 'text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800/60'
-                }`}
-              >
-                {t.ownerPortal}
-              </button>
-              
-              {/* New Multi-Tenant Enterprise Console tab */}
-              <button
-                id="tab-btn-enterprise"
-                onClick={() => setCurrentTab('enterprise')}
-                className={`px-3.5 py-2 rounded-lg font-sans text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                  currentTab === 'enterprise'
-                    ? 'bg-tenant bg-opacity-20 text-tenant border border-tenant/30 font-extrabold'
-                    : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800/60 border border-dashed border-gray-200 dark:border-slate-800'
-                }`}
-              >
-                <span className="relative flex h-2 w-2 shrink-0">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-tenant opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-tenant"></span>
-                </span>
-                {language === 'en' ? 'Super Admin' : 'የድርጅት ማዕከል'}
-              </button>
-            </div>
-
             {/* Language Toggle */}
             <div className="flex bg-gray-150 dark:bg-slate-800 p-0.5 rounded-xl border border-gray-200 dark:border-slate-700 shrink-0" id="lang-toggle-container">
               <button
@@ -232,6 +178,60 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="hidden sm:inline">{t.signOut}</span>
             </button>
           </div>
+        </div>
+
+        {/* Row 2: Desktop Navigation Subbar (Below the logo / search bar) */}
+        <div className="hidden md:flex items-center space-x-1.5 py-2.5 border-t border-gray-100 dark:border-slate-800/60">
+          <button
+            id="tab-btn-explore"
+            onClick={() => setCurrentTab('explore')}
+            className={`px-4 py-2 rounded-xl font-sans text-xs sm:text-sm font-extrabold tracking-tight transition-all cursor-pointer ${
+              currentTab === 'explore'
+                ? 'bg-tenant bg-opacity-10 text-tenant font-black shadow-xs'
+                : 'text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-850/60'
+            }`}
+          >
+            {t.explore}
+          </button>
+          <button
+            id="tab-btn-renter"
+            onClick={() => setCurrentTab('renter-dashboard')}
+            className={`px-4 py-2 rounded-xl font-sans text-xs sm:text-sm font-extrabold tracking-tight transition-all cursor-pointer ${
+              currentTab === 'renter-dashboard'
+                ? 'bg-tenant bg-opacity-10 text-tenant font-black shadow-xs'
+                : 'text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-850/60'
+            }`}
+          >
+            {t.myBookings}
+          </button>
+          <button
+            id="tab-btn-owner"
+            onClick={() => setCurrentTab('owner-dashboard')}
+            className={`px-4 py-2 rounded-xl font-sans text-xs sm:text-sm font-extrabold tracking-tight transition-all cursor-pointer ${
+              currentTab === 'owner-dashboard'
+                ? 'bg-tenant bg-opacity-10 text-tenant font-black shadow-xs'
+                : 'text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-850/60'
+            }`}
+          >
+            {t.ownerPortal}
+          </button>
+          
+          {/* New Multi-Tenant Enterprise Console tab */}
+          <button
+            id="tab-btn-enterprise"
+            onClick={() => setCurrentTab('enterprise')}
+            className={`px-4 py-2 rounded-xl font-sans text-xs sm:text-sm font-black tracking-tight transition-all cursor-pointer flex items-center gap-1.5 ${
+              currentTab === 'enterprise'
+                ? 'bg-tenant bg-opacity-20 text-tenant border border-tenant/30 font-black shadow-xs'
+                : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-850/60 border border-dashed border-gray-200 dark:border-slate-800'
+            }`}
+          >
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-tenant opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-tenant"></span>
+            </span>
+            {language === 'en' ? 'Super Admin' : 'የድርጅት ማዕከል'}
+          </button>
         </div>
 
         {/* Mobile bottom-level Tab Bar */}
