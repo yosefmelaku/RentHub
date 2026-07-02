@@ -1,0 +1,8 @@
+{
+  "firestore": [
+    {
+      "database": "ai-studio-renthub-3989344e-e0d4-4cd8-a251-7d3ef62f7aee",
+      "rules": "firestore.rules"
+    }
+  ]
+}

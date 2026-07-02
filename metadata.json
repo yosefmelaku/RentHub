@@ -1,0 +1,6 @@
+{
+  "name": "Luxerent",
+  "description": "An ultra-premium multi-tenant real estate rental platform featuring high-end apartments, villas, and houses with advanced compliance, smart ledgers, and secure bookings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,104 @@
+{
+  "entities": {
+    "listings": {
+      "title": "PropertyListing",
+      "description": "Represents a rental property listing",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "location": { "type": "string" },
+        "price": { "type": "number" },
+        "type": { "type": "string", "enum": ["house", "apartment", "villa", "studio"] },
+        "beds": { "type": "number" },
+        "baths": { "type": "number" },
+        "image": { "type": "string" },
+        "amenities": { "type": "array", "items": { "type": "string" } },
+        "rating": { "type": "number" },
+        "reviewsCount": { "type": "number" },
+        "ownerId": { "type": "string" },
+        "featured": { "type": "boolean" }
+      },
+      "required": ["id", "title", "description", "location", "price", "type", "beds", "baths", "image", "amenities", "rating", "reviewsCount", "ownerId"]
+    },
+    "bookings": {
+      "title": "Booking",
+      "description": "Represents a booking made by a renter",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "listingId": { "type": "string" },
+        "listingTitle": { "type": "string" },
+        "listingImage": { "type": "string" },
+        "listingLocation": { "type": "string" },
+        "renterId": { "type": "string" },
+        "renterName": { "type": "string" },
+        "startDate": { "type": "string" },
+        "endDate": { "type": "string" },
+        "totalPrice": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "approved", "declined", "cancelled"] },
+        "createdAt": { "type": "string" },
+        "paymentStatus": { "type": "string", "enum": ["paid", "unpaid"] },
+        "nights": { "type": "number" },
+        "contractPdfName": { "type": "string" },
+        "contractPdfData": { "type": "string" },
+        "contractStatus": { "type": "string", "enum": ["pending_owner_signature", "pending_renter_signature", "fully_signed", "draft"] },
+        "contractSignedByRenter": { "type": "boolean" },
+        "contractSignedByOwner": { "type": "boolean" },
+        "contractLastUpdated": { "type": "string" }
+      },
+      "required": ["id", "listingId", "renterId", "renterName", "startDate", "endDate", "totalPrice", "status", "createdAt", "paymentStatus", "nights"]
+    },
+    "payments": {
+      "title": "PaymentRecord",
+      "description": "Represents a booking payment receipt",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "bookingId": { "type": "string" },
+        "renterId": { "type": "string" },
+        "amount": { "type": "number" },
+        "cardholderName": { "type": "string" },
+        "cardNumberMasked": { "type": "string" },
+        "transactionId": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "status": { "type": "string", "enum": ["success", "failed"] }
+      },
+      "required": ["id", "bookingId", "renterId", "amount", "cardholderName", "cardNumberMasked", "transactionId", "timestamp", "status"]
+    },
+    "reviews": {
+      "title": "Review",
+      "description": "Represents a listing review / rating left by a user",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "listingId": { "type": "string" },
+        "renterId": { "type": "string" },
+        "renterName": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "listingId", "renterId", "renterName", "rating", "comment", "createdAt"]
+    }
+  },
+  "firestore": {
+    "listings/{listingId}": {
+      "schema": "listings",
+      "description": "Properties collection"
+    },
+    "bookings/{bookingId}": {
+      "schema": "bookings",
+      "description": "Bookings collection"
+    },
+    "payments/{paymentId}": {
+      "schema": "payments",
+      "description": "Payments collection"
+    },
+    "reviews/{reviewId}": {
+      "schema": "reviews",
+      "description": "Property listing reviews and ratings"
+    }
+  }
+}
